@@ -7,8 +7,10 @@ setTimeout(() => {
 function changeStatus() {
   const statuses = document.querySelectorAll(`td.status`)
   for (let status of statuses) {
-    let textNode = document.createTextNode("Hello World"); 
-    status.appendChild(textNode)
-  }
-  
+    status.children[0].remove()
+    status.children[0].remove()
+    const btn = document.createElement('button')
+    btn.innerText = '£?'
+    status.appendChild(btn)
+  } 
 }
