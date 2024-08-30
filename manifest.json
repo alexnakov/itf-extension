@@ -1,0 +1,15 @@
+{
+    "manifest_version": 2,
+    "name": "itfex",
+    "version": "1.0",
+  
+    "description": "Opens flight prices with suitcases for itf tournie destinations",
+  
+    "content_scripts": [
+      {
+        "matches": ["*://*.itftennis.com/en/tournament-calendar/mens-world-tennis-tour-calendar/?categories=All&*"],
+        "js": ["main.js"]
+      }
+    ]
+  }
+  
