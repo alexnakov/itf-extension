@@ -8,7 +8,8 @@
     "content_scripts": [
       {
         "matches": ["*://*.itftennis.com/en/tournament-calendar/mens-world-tennis-tour-calendar/?categories=All&*"],
-        "js": ["main.js"]
+        "js": ["main.js"],
+        "css": ["styles.css"] 
       }
     ]
   }

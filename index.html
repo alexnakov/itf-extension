@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Table with Tooltips</title>
+  </head>
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+
+    td {
+      border: 1px solid black;
+      padding: 5px;
+    }
+
+    td:hover::tooltip {
+      position: absolute;
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      padding: 5px;
+      z-index: 1;
+      display: block;
+      opacity: 0;
+      transition: opacity 0.2s ease-in-out;
+    }
+
+    td:hover::tooltip:hover {
+      opacity: 1;
+    }
+  </style>
+  <body>
+    <table>
+      <tr>
+        <th>Column 1</th>
+        <th>Column 2</th>
+        <th>Column 3</th>
+      </tr>
+      <tr>
+        <td title="Generic tooltip text">Cell 1</td>
+        <td title="Generic tooltip text">Cell 2</td>
+        <td title="Generic tooltip text">Cell 3</td>
+      </tr>
+      <tr>
+        <td title="Generic tooltip text">Cell 4</td>
+        <td title="Generic tooltip text">Cell 5</td>
+        <td title="Generic tooltip text">Cell 6</td>
+      </tr>
+    </table>
+  </body>
+</html>

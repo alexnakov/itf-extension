@@ -38,22 +38,35 @@ function insertElementBetweenChildren(parentElement, newElement, position) {
 function deletePrizeColumn() {
   const prizeMoney = document.querySelectorAll('td.prize-money')
   const prizeMoneyHeader = document.querySelector('th.prize.money')
+  const cat = document.querySelectorAll('td.category')
+  const catHeader = document.querySelector('th.category')
   prizeMoney.forEach(e => e.remove())
   prizeMoneyHeader.remove()
+  cat.forEach(e => e.remove())
+  catHeader.remove()
 }
 
-function changeCatColumnToCostColumn() {
+function addCostColumn() {
   const table = document.querySelector('table.table');
-  const headerRow = table.querySelector('thead tr th.category');
-  headerRow.textContent = 'Cost of trip'
+  const tableHead = table.querySelector('thead tr');
+  const costHeader = document.createElement('th')
+  const span = document.createElement('span')
+  span.textContent = 'Cost'
+  costHeader.appendChild(span)
+  costHeader.style.minWidth = '100px'
+  tableHead.appendChild(costHeader)
 
-  // const bodyRows = table.querySelectorAll('tbody tr');
-  // bodyRows.forEach(row => {
-  //   const newCell = document.createElement('td');
-  //   newCell.classList.add('date')
-  //   newCell.textContent = 'new cell baby'
-  //   row.appendChild(newCell);
-  // });
+  const trows = table.querySelector('tbody').children
+  for (let i = 0; i < trows.length; i++){
+    const row = trows[i]
+    const cell = document.createElement('td')
+    const span = document.createElement('span')
+    span.setAttribute('data-text', 'Thx for hovering')
+    span.classList.add('tooltip')
+    span.textContent = 'Hi'
+    cell.appendChild(span)
+    row.appendChild(cell)
+  }
 }
 
 function addDataToCostOfTripColumn() {
@@ -70,16 +83,22 @@ function addDataToCostOfTripColumn() {
     console.log(cost)
     if (cost) {
       const costCell = row.children[4]
-      console.log(costCell)
-      costCell.textContent= cost
+      while (costCell.firstChild) {costCell.firstChild.remove()}
+      costCell.style.height = '70px'
+      costCell.style.display = 'flex'
+
+      const divContainer = document.createElement('div')
+      divContainer.classList.add('tooltip-container')
+      costCell.appendChild(divContainer)
+      divContainer.style.position = 'relative'
+      divContainer.textContent= '£' + cost
     }
     if (i > 5) {break}
   }
 }
 
+
 setTimeout(() => {
   deletePrizeColumn()
-  changeCatColumnToCostColumn()
-  addDataToCostOfTripColumn()
+  addCostColumn()
 }, 3000)
-
