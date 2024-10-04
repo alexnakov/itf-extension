@@ -27,13 +27,6 @@ function getCostByLink(str1, testData) {
   return null; // Return null if link not found
 }
 
-function insertElementBetweenChildren(parentElement, newElement, position) {
-  // Get the child element at the specified position (0-based index)
-  const childElement = parentElement.children[position];
-
-  // Insert the new element before the child element
-  parentElement.insertBefore(newElement, childElement);
-}
 
 function deletePrizeColumn() {
   const prizeMoney = document.querySelectorAll('td.prize-money')
@@ -59,14 +52,11 @@ function addCostColumn() {
   const trows = table.querySelector('tbody').children
   for (let i = 0; i < trows.length; i++){
     const row = trows[i]
+    const link = row.querySelector('td.name a').getAttribute('href')
+    const actualCost = getCostByLink(link, testData)
     const cell = document.createElement('td')
-    const span = document.createElement('span')
-    span.setAttribute('data-text', 'Thx for hovering \
-      <br> I am real')
-    span.classList.add('tooltip')
-    span.textContent = 'Hi'
-    cell.appendChild(span)
     row.appendChild(cell)
+    cell.textContent = '£' + actualCost
   }
 }
 
