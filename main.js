@@ -61,7 +61,8 @@ function addCostColumn() {
     const row = trows[i]
     const cell = document.createElement('td')
     const span = document.createElement('span')
-    span.setAttribute('data-text', 'Thx for hovering')
+    span.setAttribute('data-text', 'Thx for hovering \
+      <br> I am real')
     span.classList.add('tooltip')
     span.textContent = 'Hi'
     cell.appendChild(span)
